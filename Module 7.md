@@ -16,13 +16,31 @@ Else
  
 Program:
 
-//type your code here
+#include<stdio.h> 
+struct eligib
+{
+int age; 
+char n[4];
+};
+int main()
+{
+struct eligib e; 
+scanf("%d%s",&e.age,e.n);
+if(e.age<=6)
+{
+printf("Age:%d\nName:%svaccine:%d\neligibility:no",e.age,e.n,e.age);
+}
+else
+{
+
+printf("Age:%d\nName:%svaccine:%d\neligibility:yes",e.age,e.n,e.age);
+}
+}
 
 
 Output:
 
-//paste your output here
-
+ ![image](https://github.com/user-attachments/assets/92103d9c-bf39-412e-8031-450d35d15d84)
 
 Result:
 Thus, the program is verified successfully. 

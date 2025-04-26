@@ -47,19 +47,29 @@ Algorithm:
  
 Program:
 
-//type your code here
-
-
-
+#include<stdio.h>
+#include<ctype.h>
+#include<string.h>
+int main()
+{
+    char s[100];
+    int f[10]={0};
+    scanf("%s",s);
+    for(int i=0;s[i]!='\0';i++){
+    if(isdigit(s[i]))
+    {
+        int d= s[i]- '0';
+        f[d]++;
+    }
+    }
+    for(int i=0;i<10;i++){
+    printf("%d ",f[i]);
+    }
+}
 
 Output:
 
-
-//paste your output here
-
-
-
-
+![image](https://github.com/user-attachments/assets/31e692ac-9d4e-4539-97dc-6d9a8b751560)
 
 
 Result:
@@ -84,19 +94,59 @@ Free the memory allocated for each string in s Free the memory allocated for s
  
 Program:
 
-//type your code here
-
-
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int next_permutation(int n, char **s)
+{
+    int k = -1;
+    for (int i = 0; i < n-1; i++) {
+        if (strcmp(s[i], s[i+1]) < 0)
+            k = i;
+    }
+    if (k == -1) 
+        return 0; 
+    int l = -1;
+    for (int i = k+1; i < n; i++) {
+        if (strcmp(s[k], s[i]) < 0)
+            l = i;
+    }
+    char *tmp = s[k];
+    s[k] = s[l];
+    s[l] = tmp;
+    int i = k+1, j = n-1;
+    while (i < j) {
+        tmp = s[i];
+        s[i++] = s[j];
+        s[j--] = tmp;
+    }
+    return 1; 
+}
+int main()
+{
+	char **s;
+	int n;
+	scanf("%d", &n);
+	s = calloc(n, sizeof(char*));
+	for (int i = 0; i < n; i++)
+	{
+		s[i] = calloc(n, sizeof(char));
+		scanf("%s", s[i]);
+	}
+	do
+	{
+		for (int i = 0; i < n; i++)
+			printf("%s%c", s[i], i == n - 1 ? '\n' : ' ');
+	} while (next_permutation(n, s));
+	for (int i = 0; i < n; i++)
+		free(s[i]);
+	free(s);
+	return 0;
+}
 
 Output:
 
-
-//paste your output here
-
-
-
-
+![image](https://github.com/user-attachments/assets/d9fc4c80-8c46-49dc-963f-c9d042ac448e)
 
 
 Result:
@@ -117,19 +167,29 @@ Algorithm:
  
 Program:
 
-//type your code here
-
-
-
+#include<stdio.h> 
+int main()
+{
+int n,i,j,min; 
+scanf("%d",&n);
+int len=n*2-1; 
+for (i=0;i<len;i++)
+{
+for (j=0;j<len;j++)
+{
+min=i<j?i:j;
+min=min<len-i-1?min:len-1-i; 
+min=min<len-j-1?min:len-1-j; 
+printf("%d ",n-min);
+}
+printf("\n");
+}
+return 0;
+}
 
 Output:
 
-
-//paste your output here
-
-
-
-
+![image](https://github.com/user-attachments/assets/94870ee4-ae77-4e6c-bb43-671d563dae5e)
 
 
 Result:
@@ -156,20 +216,22 @@ o	Call the square() function and display the result.
 
 Program:
 
-//type your code here
-
-
-
+#include <stdio.h>
+void square();
+int main(){
+    square();
+    return 0;
+}
+void square(){
+    int a;
+    scanf("%d",&a);
+    float ans = a*a;
+    printf("The square of %d is : %.2f",a,ans);
+}
 
 Output:
 
-
-//paste your output here
-
-
-
-
-
+![image](https://github.com/user-attachments/assets/9bee30a4-b610-49fb-8019-838980dfb7ea)
 
 Result:
 Thus, the program is verified successfully

@@ -9,9 +9,69 @@ Algorithm:
 4.	Call the search function and perform other linked list operations as needed.
  
 Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+// 1. Define the structure for a node in a linked list
+struct Node {
+    char data;
+    struct Node* next;
+};
 
+// 2. Define the search function to find a specific character in the linked list
+int search(struct Node* head, char key) {
+    struct Node* current = head; // Start from the head
+    int position = 1;             // Keep track of the position of the node
+
+    while (current != NULL) {
+        if (current->data == key) {
+            printf("Element '%c' found at position %d.\n", key, position);
+            return position; // Return the position where the element is found
+        }
+        current = current->next; // Move to the next node
+        position++;
+    }
+
+    printf("Element '%c' not found in the linked list.\n", key);
+    return -1; // Return -1 if the element is not found
+}
+
+// Helper function to create a new node
+struct Node* createNode(char data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    if (newNode == NULL) {
+        printf("Memory allocation failed!\n");
+        exit(EXIT_FAILURE);
+    }
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+int main() {
+    // 3. Initialize the head of the linked list as needed
+    struct Node* head = NULL;
+
+    // Create a sample linked list: a -> b -> c -> d -> e
+    head = createNode('a');
+    head->next = createNode('b');
+    head->next->next = createNode('c');
+    head->next->next->next = createNode('d');
+    head->next->next->next->next = createNode('e');
+
+    // Display the linked list (optional, for verification)
+    printf("Linked List: ");
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%c -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+
+    // 4. Call the search function and perform other linked list operations as needed
+    char searchElement1 = 'c';
+```
 Output:
 
 //paste your output here
